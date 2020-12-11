@@ -4,8 +4,6 @@
  <meta charset="UTF-8"> 
  <title>html 表格导出</title> 
  <script language="JavaScript" type="text/javascript"> 
-   
-   
   var idTmr; 
  //获取当前浏览器类型 
   function getExplorer() { 
@@ -79,21 +77,20 @@
      format = function(s, c) { 
       return s.replace(/{(\w+)}/g, 
         function(m, p) { return c[p]; }) } 
-   return function(table, name) { 
-    if (!table.nodeType) table = document.getElementById(table) 
-    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML} 
+      return function(table, name) { 
+         if (!table.nodeType) table = document.getElementById(table) 
+         var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML} 
 
 
-    var link = document.createElement("a");
-    link.href = uri + base64(format(template, ctx)) 
-    //对下载的文件命名
-    link.download =  "json数据表.xls";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // window.location.href = uri + base64(format(template, ctx)) 
-   } 
+         var link = document.createElement("a");
+         link.href = uri + base64(format(template, ctx)) 
+         //对下载的文件命名
+         link.download =  "json数据表.xls";
+         document.body.appendChild(link);
+         link.click();
+         document.body.removeChild(link);
+      // window.location.href = uri + base64(format(template, ctx)) 
+      } 
   })() 
   
  </script> 
